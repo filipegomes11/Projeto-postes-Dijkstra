@@ -13,7 +13,7 @@ public class MenorCaminho {
 		Map<Poste, Double> distancias = new HashMap<>(); // Mapa de distâncias para cada poste
 		Map<Poste, Poste> anteriores = new HashMap<>(); // Mapa de postes anteriores no caminho mais curto
 		PriorityQueue<PosteDistancia> heap = new PriorityQueue<>(); // Heap para encontrar o próximo poste com menor
-																	// distância
+		// distância
 
 		// Inicialização
 		for (Poste poste : grafo.getPostes()) {
@@ -51,7 +51,6 @@ public class MenorCaminho {
 			poste = anteriores.get(poste);
 		}
 		Collections.reverse(caminho);
-
 		return caminho;
 	}
 

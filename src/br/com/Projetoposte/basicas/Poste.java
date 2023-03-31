@@ -35,4 +35,8 @@ public class Poste {
     public void addAresta(Aresta aresta) {
         arestas.add(aresta);
     }
+    @Override
+    public String toString() {
+        return "Poste " + id;
+    }
 }
