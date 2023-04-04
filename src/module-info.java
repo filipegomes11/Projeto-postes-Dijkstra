@@ -6,4 +6,5 @@
  *
  */
 module Projetoposte {
+	requires java.desktop;
 }

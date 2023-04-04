@@ -1,4 +1,4 @@
-package br.com.Projetoposte.basicas;
+package br.com.Projetoposte.negocios;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -6,6 +6,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
+
+import br.com.Projetoposte.basicas.Aresta;
+import br.com.Projetoposte.basicas.Grafo;
+import br.com.Projetoposte.basicas.Poste;
+import br.com.Projetoposte.basicas.PosteDistancia;
 
 public class MenorCaminho {
 
@@ -29,15 +34,15 @@ public class MenorCaminho {
 		// Relaxamento
 		while (!heap.isEmpty()) {
 			PosteDistancia atual = heap.poll();
-			if (atual.poste.equals(destino)) {
+			if (atual.getPoste().equals(destino)) {
 				break;
 			}
-			for (Aresta aresta : atual.poste.getArestas()) {
+			for (Aresta aresta : atual.getPoste().getArestas()) {
 				Poste vizinho = aresta.getDestino();
-				double distancia = distancias.get(atual.poste) + aresta.getDistancia();
+				double distancia = distancias.get(atual.getPoste()) + aresta.getDistancia();
 				if (distancia < distancias.get(vizinho)) {
 					distancias.put(vizinho, distancia);
-					anteriores.put(vizinho, atual.poste);
+					anteriores.put(vizinho, atual.getPoste());
 					heap.offer(new PosteDistancia(vizinho, distancia));
 				}
 			}
@@ -54,18 +59,5 @@ public class MenorCaminho {
 		return caminho;
 	}
 
-	private static class PosteDistancia implements Comparable<PosteDistancia> {
-		Poste poste;
-		double distancia;
-
-		public PosteDistancia(Poste poste, double distancia) {
-			this.poste = poste;
-			this.distancia = distancia;
-		}
-
-		@Override
-		public int compareTo(PosteDistancia o) {
-			return Double.compare(distancia, o.distancia);
-		}
-	}
+	
 }

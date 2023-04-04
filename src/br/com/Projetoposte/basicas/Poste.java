@@ -8,15 +8,22 @@ public class Poste {
     private int conexoesDisponiveis;
     private int conexoesMaximas;
     private List<Aresta> arestas;
+    private boolean distribuicaoCentral;
 
-    public Poste(int id, int conexoesDisponiveis, int conexoesMaximas) {
-        this.id = id;
-        this.conexoesDisponiveis = conexoesDisponiveis;
-        this.conexoesMaximas = conexoesMaximas;
-        this.arestas = new ArrayList<>();
-    }
+    
 
-    public int getId() {
+    public Poste(int id, int conexoesDisponiveis, int conexoesMaximas,
+			boolean distribuicaoCentral) {
+		super();
+		this.id = id;
+		this.conexoesDisponiveis = conexoesDisponiveis;
+		this.conexoesMaximas = conexoesMaximas;
+		this.arestas = new ArrayList<>();
+		this.distribuicaoCentral = distribuicaoCentral;
+	}
+
+    
+	public int getId() {
         return id;
     }
 
@@ -35,7 +42,19 @@ public class Poste {
     public void addAresta(Aresta aresta) {
         arestas.add(aresta);
     }
-    @Override
+    
+    
+    public boolean isDistribuicaoCentral() {
+		return distribuicaoCentral;
+	}
+
+
+	public void setDistribuicaoCentral(boolean distribuicaoCentral) {
+		this.distribuicaoCentral = distribuicaoCentral;
+	}
+
+
+	@Override
     public String toString() {
         return "Poste " + id;
     }
